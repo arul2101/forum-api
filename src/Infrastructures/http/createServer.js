@@ -19,6 +19,14 @@ const createServer = async (container) => {
     },
   ]);
 
+  server.route({
+    method: 'GET',
+    path: '/',
+    handler: () => ({
+      value: 'Hello World!',
+    }),
+  });
+
   server.auth.strategy('forumapi__jwt', 'jwt', {
     keys: process.env.ACCESS_TOKEN_KEY,
     verify: {

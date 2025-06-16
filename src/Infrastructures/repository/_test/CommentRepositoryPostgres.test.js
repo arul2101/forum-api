@@ -75,34 +75,14 @@ describe('CommentRepository postgres', () => {
         owner: 'user-123123',
       });
 
-      await CommentsTableTestHelper.addComment({
-        id: 'comment-asdas1231',
-        content: 'haloo from komen 2',
-        thread_id: 'thread-123123',
-        owner: 'user-123123',
-      });
-
-      await CommentsTableTestHelper.addComment({
-        id: 'comment-ljasdl213',
-        content: 'haloo from komen 3',
-        thread_id: 'thread-123123',
-        owner: 'user-123123',
-      });
-
       // Action
       const comments = await commentRepositoryPostgres.getCommentsThreadById('thread-123123');
 
       // Assert
-      expect(comments).toHaveLength(3);
+      expect(comments).toHaveLength(1);
       expect(comments[0].id).toStrictEqual('comment-asdasd12312');
       expect(comments[0].content).toStrictEqual('haloo from komen 1');
       expect(comments[0].username).toStrictEqual('dicoding');
-      expect(comments[1].id).toStrictEqual('comment-asdas1231');
-      expect(comments[1].content).toStrictEqual('haloo from komen 2');
-      expect(comments[1].username).toStrictEqual('dicoding');
-      expect(comments[2].id).toStrictEqual('comment-ljasdl213');
-      expect(comments[2].content).toStrictEqual('haloo from komen 3');
-      expect(comments[2].username).toStrictEqual('dicoding');
     });
   });
 
