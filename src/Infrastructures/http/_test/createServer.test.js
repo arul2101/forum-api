@@ -53,7 +53,7 @@ describe('HTTP server', () => {
 
       // Assert
       expect(statusCode).toEqual(200);
-      expect(value).toEqual('Hello Worldd!');
+      expect(value).toEqual('Hello Worldd!!');
     });
   });
 });
