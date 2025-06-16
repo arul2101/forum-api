@@ -37,4 +37,23 @@ describe('HTTP server', () => {
     expect(responseJson.status).toEqual('error');
     expect(responseJson.message).toEqual('terjadi kegagalan pada server kami');
   });
+
+  describe('when GET /', () => {
+    it('should return 200 and hello world', async () => {
+      // Arrange
+      const server = await createServer();
+
+      // Action
+      const { statusCode, payload } = await server.inject({
+        method: 'GET',
+        url: '/',
+      });
+
+      const { value } = JSON.parse(payload);
+
+      // Assert
+      expect(statusCode).toEqual(200);
+      expect(value).toEqual('Hello World!');
+    });
+  });
 });
